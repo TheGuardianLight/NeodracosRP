@@ -96,7 +96,7 @@ foreach ($rps as $rp) {
                                             </div>
                                             <div>
                                                 Le RP est de type <strong><?= htmlspecialchars($rp['type_name']) ?></strong> et a commencé le
-                                                <strong><?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></strong> et a été terminé le
+                                                <strong><?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A'?></strong> et a été terminé le
                                                 <strong><?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong>.
                                             </div>
                                         </div>

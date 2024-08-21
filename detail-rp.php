@@ -40,7 +40,8 @@ require 'php/detail-rp_managment.php';
                     <li><strong>Sur :</strong> <?= htmlspecialchars($rp['reseau_name']) ?></li>
                     <li><strong>Type de RP :</strong> <?= htmlspecialchars($rp['type_name']) ?></li>
                     <li><strong>Avec :</strong> <?= htmlspecialchars($rp['roleplayer_name']) ?></li>
-                    <li><strong>Date de début :</strong> <?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></li>
+
+                    <li><strong>Date de début :</strong> <?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?></strong></li>
                     <li><strong>Date de fin :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong></li>
                     <li><strong>État :</strong> <span class="badge <?= getBadgeClass($rp['etat_name']) ?>"><?= htmlspecialchars($rp['etat_name']) ?></span></li>
                 </ul>

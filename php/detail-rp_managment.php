@@ -49,7 +49,7 @@ if (!$rp) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['modifier_rp'])) {
     $new_etat = intval($_POST['etat']);
-    $new_date_debut = $_POST['date_debut'];
+    $new_date_debut = $_POST['date_debut'] ? $_POST['date_debut'] : null;
     $new_date_fin = $_POST['date_fin'] ? $_POST['date_fin'] : null;
     $rp_id = intval($rp['rp_id']); // Prenez l'ID du RP en cours d'affichage
 

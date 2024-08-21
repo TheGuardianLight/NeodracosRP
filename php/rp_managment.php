@@ -29,13 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $oc1Id = $_POST['oc1_id'];
         $oc2Id = $_POST['oc2_id'];
         $typeId = $_POST['type_id'];
-        $dateDebut = $_POST['date_debut'];
+        $dateDebut = !empty($_POST['date_debut']) ? $_POST['date_debut'] : null;
         $dateFin = !empty($_POST['date_fin']) ? $_POST['date_fin'] : null;
         $etatId = $_POST['etat_id'];
         $roleplayerId = $_POST['rp_roleplayer']; // Nouveau champ
 
         // Validate inputs
-        if ($reseauId && $oc1Id && $oc2Id && $typeId && $dateDebut && $etatId && $roleplayerId) {
+        if ($reseauId && $oc1Id && $oc2Id && $typeId && $etatId && $roleplayerId) {
             // Insert data into database
             $stmt = $pdo->prepare("INSERT INTO roleplay (rp_reseau, rp_oc1_name, rp_oc2_name, rp_type, rp_date_debut, rp_date_fin, rp_etat, rp_owner, rp_roleplayer) 
                                    VALUES (:reseau_id, :oc1_id, :oc2_id, :type_id, :date_debut, :date_fin, :etat_id, :rp_owner, :rp_roleplayer)");

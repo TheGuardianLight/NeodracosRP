@@ -102,7 +102,7 @@ require 'php/rp_managment.php';
                     </div>
                     <div class="col-md-6">
                         <label for="date_debut" class="form-label">Date de début</label>
-                        <input type="date" class="form-control" id="date_debut" name="date_debut" required aria-describedby="dateDebutHelp">
+                        <input type="date" class="form-control" id="date_debut" name="date_debut" aria-describedby="dateDebutHelp">
                         <div id="dateDebutHelp" class="form-text">Format attendu : JJ/MM/AAAA</div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@ require 'php/rp_managment.php';
                                 </div>
                                 <div>
                                     Le RP est de type <strong><?= htmlspecialchars($rp['type_name']) ?></strong> et a commencé le
-                                    <strong><?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></strong>. Il a été terminé le
+                                    <strong><?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?></strong>. Il a été terminé le
                                     <strong><?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong>.
                                 </div>
                                 <div>
