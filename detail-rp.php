@@ -34,32 +34,44 @@ require 'php/detail-rp_managment.php';
             <h2 class="h4 mb-0"><i class="fas fa-info-circle"></i> Détails du RP</h2>
         </div>
         <div class="card-body">
-            <div>
-                <h3><?= htmlspecialchars($rp['oc1_name']) ?> x <?= htmlspecialchars($rp['oc2_name']) ?></h3>
-                <p>Sur : <?= htmlspecialchars($rp['reseau_name']) ?></p>
-                <p>Type de RP : <strong><?= htmlspecialchars($rp['type_name']) ?></strong></p>
-                <p>Avec : <strong><?= htmlspecialchars($rp['roleplayer_name']) ?></strong></p>
-                <p>Date de début : <strong><?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></strong></p>
-                <p>Date de fin : <strong><?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong></p>
-                <p>État : <strong><?= htmlspecialchars($rp['etat_name']) ?></strong></p>
+            <div class="mb-4">
+                <h3 class="mb-3"><?= htmlspecialchars($rp['oc1_name']) ?> <span class="text-muted">x</span> <?= htmlspecialchars($rp['oc2_name']) ?></h3>
+                <ul class="list-unstyled">
+                    <li><strong>Sur :</strong> <?= htmlspecialchars($rp['reseau_name']) ?></li>
+                    <li><strong>Type de RP :</strong> <?= htmlspecialchars($rp['type_name']) ?></li>
+                    <li><strong>Avec :</strong> <?= htmlspecialchars($rp['roleplayer_name']) ?></li>
+                    <li><strong>Date de début :</strong> <?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></li>
+                    <li><strong>Date de fin :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong></li>
+                    <li><strong>État :</strong> <span class="badge <?= getBadgeClass($rp['etat_name']) ?>"><?= htmlspecialchars($rp['etat_name']) ?></span></li>
+                </ul>
             </div>
             <hr>
             <div>
-                <h4>Détails des Personnages</h4>
-                <div>
-                    <h5><?= htmlspecialchars($rp['oc1_name']) ?></h5>
-                    <p>Genre : <?= htmlspecialchars($rp['oc1_gender']) ?></p>
-                    <p>Propriétaire : <?= htmlspecialchars($rp['oc1_owner']) ?></p>
-                </div>
-                <div>
-                    <h5><?= htmlspecialchars($rp['oc2_name']) ?></h5>
-                    <p>Genre : <?= htmlspecialchars($rp['oc2_gender']) ?></p>
-                    <p>Propriétaire : <?= htmlspecialchars($rp['oc2_owner']) ?></p>
+                <h4><i class="fas fa-users"></i> Détails des Personnages</h4>
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-light">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= htmlspecialchars($rp['oc1_name']) ?></h5>
+                                <p class="card-text"><strong>Genre :</strong> <?= htmlspecialchars($rp['oc1_gender']) ?></p>
+                                <p class="card-text"><strong>Propriétaire :</strong> <?= htmlspecialchars($rp['oc1_owner']) ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-light">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= htmlspecialchars($rp['oc2_name']) ?></h5>
+                                <p class="card-text"><strong>Genre :</strong> <?= htmlspecialchars($rp['oc2_gender']) ?></p>
+                                <p class="card-text"><strong>Propriétaire :</strong> <?= htmlspecialchars($rp['oc2_owner']) ?></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>
             <div>
-                <h4>Changer l'état du RP</h4>
+                <h4><i class="fas fa-edit"></i> Changer l'état du RP</h4>
                 <form method="post" action="">
                     <div class="form-group">
                         <label for="etat">Sélectionner le nouvel état :</label>

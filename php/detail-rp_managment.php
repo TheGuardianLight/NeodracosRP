@@ -61,3 +61,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_etat'])) {
     }
 }
 
+function getBadgeClass($etat) {
+    switch ($etat) {
+        case 'Pas commencé':
+            return 'bg-secondary';
+        case 'En attente':
+            return 'bg-warning';
+        case 'En cours':
+            return 'bg-primary';
+        case 'Terminé':
+            return 'bg-success';
+        case 'Abandonné':
+            return 'bg-danger';
+        default:
+            return 'bg-secondary';
+    }
+}
