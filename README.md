@@ -23,7 +23,6 @@ Voici donc ce que j'ai prévu dans ce projet :
 - [ ] L'importation de données.
 - [x] Un script d'installation.
 - [ ] Ajouter une documentation intégré au site.
-- [ ] Ajouter un système de triage.
 - [ ] Ajouter une page d'accueil avec des statistiques.
 
 ## Des problèmes ? Des idées d'améliorations ?
