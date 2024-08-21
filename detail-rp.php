@@ -71,31 +71,34 @@ if (!$rp) {
 
 <div class="container mt-4">
     <div class="card shadow-sm">
-        <div class="card-header bg-secondary text-white">
-            <h2 class="h4 mb-0"><i class="fas fa-info-circle"></i> Détails du RP</h2>
+        <div class="card-header bg-secondary text-white d-flex align-items-center">
+            <h2 class="h4 mb-0 me-2"><i class="fas fa-info-circle"></i></h2>
+            <h2 class="h4 mb-0">Détails du RP</h2>
         </div>
         <div class="card-body">
             <div>
-                <h3><?= htmlspecialchars($rp['oc1_name']) ?> x <?= htmlspecialchars($rp['oc2_name']) ?></h3>
-                <p>Sur : <?= htmlspecialchars($rp['reseau_name']) ?></p>
-                <p>Type de RP : <strong><?= htmlspecialchars($rp['type_name']) ?></strong></p>
-                <p>Avec : <strong><?= htmlspecialchars($rp['roleplayer_name']) ?></strong></p>
-                <p>Date de début : <strong><?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></strong></p>
-                <p>Date de fin : <strong><?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong></p>
-                <p>État : <strong><?= htmlspecialchars($rp['etat_name']) ?></strong></p>
+                <h3 class="fw-bold"><?= htmlspecialchars($rp['oc1_name']) ?> x <?= htmlspecialchars($rp['oc2_name']) ?></h3>
+                <p><strong>Sur :</strong> <?= htmlspecialchars($rp['reseau_name']) ?></p>
+                <p><strong>Type de RP :</strong> <?= htmlspecialchars($rp['type_name']) ?></p>
+                <p><strong>Avec :</strong> <?= htmlspecialchars($rp['roleplayer_name']) ?></p>
+                <p><strong>Date de début :</strong> <?= date("d/m/Y", strtotime($rp['rp_date_debut'])) ?></p>
+                <p><strong>Date de fin :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></p>
+                <p><strong>État :</strong> <?= htmlspecialchars($rp['etat_name']) ?></p>
             </div>
             <hr>
             <div>
-                <h4>Détails des Personnages</h4>
-                <div>
-                    <h5><?= htmlspecialchars($rp['oc1_name']) ?></h5>
-                    <p>Genre : <?= htmlspecialchars($rp['oc1_gender']) ?></p>
-                    <p>Propriétaire : <?= htmlspecialchars($rp['oc1_owner']) ?></p>
-                </div>
-                <div>
-                    <h5><?= htmlspecialchars($rp['oc2_name']) ?></h5>
-                    <p>Genre : <?= htmlspecialchars($rp['oc2_gender']) ?></p>
-                    <p>Propriétaire : <?= htmlspecialchars($rp['oc2_owner']) ?></p>
+                <h4 class="fw-bold">Détails des Personnages</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="fw-semibold"><?= htmlspecialchars($rp['oc1_name']) ?></h5>
+                        <p><strong>Genre :</strong> <?= htmlspecialchars($rp['oc1_gender']) ?></p>
+                        <p><strong>Propriétaire :</strong> <?= htmlspecialchars($rp['oc1_owner']) ?></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="fw-semibold"><?= htmlspecialchars($rp['oc2_name']) ?></h5>
+                        <p><strong>Genre :</strong> <?= htmlspecialchars($rp['oc2_gender']) ?></p>
+                        <p><strong>Propriétaire :</strong> <?= htmlspecialchars($rp['oc2_owner']) ?></p>
+                    </div>
                 </div>
             </div>
         </div>
