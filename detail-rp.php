@@ -71,7 +71,7 @@ require 'php/detail-rp_managment.php';
             </div>
             <hr>
             <div>
-                <h4><i class="fas fa-edit"></i> Changer l'état du RP</h4>
+                <h4><i class="fas fa-edit"></i> Modifier le RP</h4>
                 <form method="post" action="">
                     <div class="form-group">
                         <label for="etat">Sélectionner le nouvel état :</label>
@@ -84,7 +84,15 @@ require 'php/detail-rp_managment.php';
                             ?>
                         </select>
                     </div>
-                    <button type="submit" name="change_etat" class="btn btn-primary mt-2">Modifier l'état</button>
+                    <div class="form-group mt-3">
+                        <label for="date_debut">Nouvelle date de début :</label>
+                        <input type="date" name="date_debut" id="date_debut" class="form-control" value="<?= htmlspecialchars($rp['rp_date_debut']) ?>">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="date_fin">Nouvelle date de fin :</label>
+                        <input type="date" name="date_fin" id="date_fin" class="form-control" value="<?= htmlspecialchars($rp['rp_date_fin']) ?>">
+                    </div>
+                    <button type="submit" name="modifier_rp" class="btn btn-primary mt-3">Modifier le RP</button>
                 </form>
             </div>
         </div>

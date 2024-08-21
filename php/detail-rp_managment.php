@@ -47,17 +47,21 @@ if (!$rp) {
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_etat'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['modifier_rp'])) {
     $new_etat = intval($_POST['etat']);
+    $new_date_debut = $_POST['date_debut'];
+    $new_date_fin = $_POST['date_fin'] ? $_POST['date_fin'] : null;
     $rp_id = intval($rp['rp_id']); // Prenez l'ID du RP en cours d'affichage
 
-    $stmt = $pdo->prepare('UPDATE roleplay SET rp_etat = ? WHERE rp_id = ?');
-    if ($stmt->execute([$new_etat, $rp_id])) {
-        echo '<div class="alert alert-success" role="alert">État du RP changé avec succès.</div>';
-        // Mettre à jour l'état du RP dans l'affichage
+    $stmt = $pdo->prepare('UPDATE roleplay SET rp_etat = ?, rp_date_debut = ?, rp_date_fin = ? WHERE rp_id = ?');
+    if ($stmt->execute([$new_etat, $new_date_debut, $new_date_fin, $rp_id])) {
+        echo '<div class="alert alert-success" role="alert">Les détails du RP ont été mis à jour avec succès.</div>';
+        // Mettre à jour les détails du RP dans l'affichage
         $rp['etat_name'] = $pdo->query('SELECT etat_name FROM etat_rp WHERE etat_id = ' . $new_etat)->fetchColumn();
+        $rp['rp_date_debut'] = $new_date_debut;
+        $rp['rp_date_fin'] = $new_date_fin;
     } else {
-        echo '<div class="alert alert-danger" role="alert">Erreur lors du changement d\'état du RP.</div>';
+        echo '<div class="alert alert-danger" role="alert">Erreur lors de la mise à jour des détails du RP.</div>';
     }
 }
 
