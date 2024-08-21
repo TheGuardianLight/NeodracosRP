@@ -1,5 +1,5 @@
 <?php
-global $pdo;
+global $pdo, $rp;
 
 session_start(); // Start the session
 
