@@ -1,5 +1,6 @@
 <?php
 global $pdo;
+
 /**
  * Copyright (c) 2024 - Veivneorul. This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (BY-NC-ND 4.0).
  */
@@ -47,21 +48,35 @@ if (!$rp) {
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['modifier_rp'])) {
-    $new_etat = intval($_POST['etat']);
-    $new_date_debut = $_POST['date_debut'] ? $_POST['date_debut'] : null;
-    $new_date_fin = $_POST['date_fin'] ? $_POST['date_fin'] : null;
-    $rp_id = intval($rp['rp_id']); // Prenez l'ID du RP en cours d'affichage
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['modifier_etat'])) {
+        $new_etat = intval($_POST['etat']);
+        $rp_id = intval($rp['rp_id']); // Prenez l'ID du RP en cours d'affichage
 
-    $stmt = $pdo->prepare('UPDATE roleplay SET rp_etat = ?, rp_date_debut = ?, rp_date_fin = ? WHERE rp_id = ?');
-    if ($stmt->execute([$new_etat, $new_date_debut, $new_date_fin, $rp_id])) {
-        echo '<div class="alert alert-success" role="alert">Les détails du RP ont été mis à jour avec succès.</div>';
-        // Mettre à jour les détails du RP dans l'affichage
-        $rp['etat_name'] = $pdo->query('SELECT etat_name FROM etat_rp WHERE etat_id = ' . $new_etat)->fetchColumn();
-        $rp['rp_date_debut'] = $new_date_debut;
-        $rp['rp_date_fin'] = $new_date_fin;
-    } else {
-        echo '<div class="alert alert-danger" role="alert">Erreur lors de la mise à jour des détails du RP.</div>';
+        $stmt = $pdo->prepare('UPDATE roleplay SET rp_etat = ? WHERE rp_id = ?');
+        if ($stmt->execute([$new_etat, $rp_id])) {
+            echo '<div class="alert alert-success" role="alert">L\'état du RP a été mis à jour avec succès.</div>';
+            // Mettre à jour les détails du RP dans l'affichage
+            $rp['etat_name'] = $pdo->query('SELECT etat_name FROM etat_rp WHERE etat_id = ' . $new_etat)->fetchColumn();
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Erreur lors de la mise à jour de l\'état du RP.</div>';
+        }
+    }
+
+    if (isset($_POST['modifier_dates'])) {
+        $new_date_debut = $_POST['date_debut'] ? $_POST['date_debut'] : null;
+        $new_date_fin = $_POST['date_fin'] ? $_POST['date_fin'] : null;
+        $rp_id = intval($rp['rp_id']); // Prenez l'ID du RP en cours d'affichage
+
+        $stmt = $pdo->prepare('UPDATE roleplay SET rp_date_debut = ?, rp_date_fin = ? WHERE rp_id = ?');
+        if ($stmt->execute([$new_date_debut, $new_date_fin, $rp_id])) {
+            echo '<div class="alert alert-success" role="alert">Les dates du RP ont été mise à jour avec succès.</div>';
+            // Mettre à jour les détails du RP dans l'affichage
+            $rp['rp_date_debut'] = $new_date_debut;
+            $rp['rp_date_fin'] = $new_date_fin;
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Erreur lors de la mise à jour des dates du RP.</div>';
+        }
     }
 }
 
@@ -81,3 +96,4 @@ function getBadgeClass($etat) {
             return 'bg-secondary';
     }
 }
+?>

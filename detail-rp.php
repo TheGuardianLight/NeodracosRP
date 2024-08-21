@@ -40,9 +40,8 @@ require 'php/detail-rp_managment.php';
                     <li><strong>Sur :</strong> <?= htmlspecialchars($rp['reseau_name']) ?></li>
                     <li><strong>Type de RP :</strong> <?= htmlspecialchars($rp['type_name']) ?></li>
                     <li><strong>Avec :</strong> <?= htmlspecialchars($rp['roleplayer_name']) ?></li>
-
-                    <li><strong>Date de début :</strong> <?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?></strong></li>
-                    <li><strong>Date de fin :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong></li>
+                    <li><strong>Date de début :</strong> <?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?></li>
+                    <li><strong>Date de fin :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></li>
                     <li><strong>État :</strong> <span class="badge <?= getBadgeClass($rp['etat_name']) ?>"><?= htmlspecialchars($rp['etat_name']) ?></span></li>
                 </ul>
             </div>
@@ -73,28 +72,39 @@ require 'php/detail-rp_managment.php';
             <hr>
             <div>
                 <h4><i class="fas fa-edit"></i> Modifier le RP</h4>
-                <form method="post" action="">
-                    <div class="form-group">
-                        <label for="etat">Sélectionner le nouvel état :</label>
-                        <select name="etat" id="etat" class="form-control">
-                            <?php
-                            $stmt = $pdo->query('SELECT * FROM etat_rp');
-                            while ($row = $stmt->fetch()) {
-                                echo '<option value="' . htmlspecialchars($row['etat_id']) . '">' . htmlspecialchars($row['etat_name']) . '</option>';
-                            }
-                            ?>
-                        </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form method="post" action="">
+                            <input type="hidden" name="modifier_etat" value="1">
+                            <div class="form-group">
+                                <label for="etat">Sélectionner le nouvel état :</label>
+                                <select name="etat" id="etat" class="form-control">
+                                    <?php
+                                    $stmt = $pdo->query('SELECT * FROM etat_rp');
+                                    while ($row = $stmt->fetch()) {
+                                        echo '<option value="' . htmlspecialchars($row['etat_id']) . '"'. ($rp['rp_etat'] == $row['etat_id'] ? ' selected' : '') .'>' . htmlspecialchars($row['etat_name']) . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Modifier l'état</button>
+                        </form>
                     </div>
-                    <div class="form-group mt-3">
-                        <label for="date_debut">Nouvelle date de début :</label>
-                        <input type="date" name="date_debut" id="date_debut" class="form-control" value="<?= htmlspecialchars($rp['rp_date_debut']) ?>">
+                    <div class="col-md-6">
+                        <form method="post" action="">
+                            <input type="hidden" name="modifier_dates" value="1">
+                            <div class="form-group">
+                                <label for="date_debut">Nouvelle date de début :</label>
+                                <input type="date" name="date_debut" id="date_debut" class="form-control" value="<?= htmlspecialchars($rp['rp_date_debut']) ?>">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="date_fin">Nouvelle date de fin :</label>
+                                <input type="date" name="date_fin" id="date_fin" class="form-control" value="<?= htmlspecialchars($rp['rp_date_fin']) ?>">
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Modifier les dates</button>
+                        </form>
                     </div>
-                    <div class="form-group mt-3">
-                        <label for="date_fin">Nouvelle date de fin :</label>
-                        <input type="date" name="date_fin" id="date_fin" class="form-control" value="<?= htmlspecialchars($rp['rp_date_fin']) ?>">
-                    </div>
-                    <button type="submit" name="modifier_rp" class="btn btn-primary mt-3">Modifier le RP</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
