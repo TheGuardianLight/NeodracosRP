@@ -91,7 +91,8 @@ $rps = $rpStmt->fetchAll();
 /**
  * Fonction pour afficher une couleur de badge en fonction de l'état du RP.
  */
-function getBadgeClass($etat) {
+function getBadgeClass($etat)
+{
     switch ($etat) {
         case 'Pas commencé':
             return 'bg-secondary';

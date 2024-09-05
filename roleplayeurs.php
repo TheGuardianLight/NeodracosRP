@@ -86,7 +86,8 @@ $reseaux = $stmtReseaux->fetchAll();
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <?= htmlspecialchars($roleplayeur['roleplayer_name']) ?>
                             <form action="roleplayeurs.php" method="post" class="m-0">
-                                <input type="hidden" name="delete_roleplayeur_id" value="<?= $roleplayeur['roleplayer_id'] ?>">
+                                <input type="hidden" name="delete_roleplayeur_id"
+                                       value="<?= $roleplayeur['roleplayer_id'] ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                             </form>
                         </li>

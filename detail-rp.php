@@ -35,14 +35,21 @@ require 'php/detail-rp_managment.php';
         </div>
         <div class="card-body">
             <div class="mb-4">
-                <h3 class="mb-3"><?= htmlspecialchars($rp['oc1_name']) ?> <span class="text-muted">x</span> <?= htmlspecialchars($rp['oc2_name']) ?></h3>
+                <h3 class="mb-3"><?= htmlspecialchars($rp['oc1_name']) ?> <span
+                            class="text-muted">x</span> <?= htmlspecialchars($rp['oc2_name']) ?></h3>
                 <ul class="list-unstyled">
                     <li><strong>Sur :</strong> <?= htmlspecialchars($rp['reseau_name']) ?></li>
                     <li><strong>Type de RP :</strong> <?= htmlspecialchars($rp['type_name']) ?></li>
                     <li><strong>Avec :</strong> <?= htmlspecialchars($rp['roleplayer_name']) ?></li>
-                    <li><strong>Date de début :</strong> <?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?></li>
-                    <li><strong>Date de fin :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></li>
-                    <li><strong>État :</strong> <span class="badge <?= getBadgeClass($rp['etat_name']) ?>"><?= htmlspecialchars($rp['etat_name']) ?></span></li>
+                    <li><strong>Date de début
+                            :</strong> <?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?>
+                    </li>
+                    <li><strong>Date de fin
+                            :</strong> <?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?>
+                    </li>
+                    <li><strong>État :</strong> <span
+                                class="badge <?= getBadgeClass($rp['etat_name']) ?>"><?= htmlspecialchars($rp['etat_name']) ?></span>
+                    </li>
                 </ul>
             </div>
             <hr>
@@ -53,8 +60,10 @@ require 'php/detail-rp_managment.php';
                         <div class="card border-light">
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($rp['oc1_name']) ?></h5>
-                                <p class="card-text"><strong>Genre :</strong> <?= htmlspecialchars($rp['oc1_gender']) ?></p>
-                                <p class="card-text"><strong>Propriétaire :</strong> <?= htmlspecialchars($rp['oc1_owner']) ?></p>
+                                <p class="card-text"><strong>Genre :</strong> <?= htmlspecialchars($rp['oc1_gender']) ?>
+                                </p>
+                                <p class="card-text"><strong>Propriétaire
+                                        :</strong> <?= htmlspecialchars($rp['oc1_owner']) ?></p>
                             </div>
                         </div>
                     </div>
@@ -62,8 +71,10 @@ require 'php/detail-rp_managment.php';
                         <div class="card border-light">
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($rp['oc2_name']) ?></h5>
-                                <p class="card-text"><strong>Genre :</strong> <?= htmlspecialchars($rp['oc2_gender']) ?></p>
-                                <p class="card-text"><strong>Propriétaire :</strong> <?= htmlspecialchars($rp['oc2_owner']) ?></p>
+                                <p class="card-text"><strong>Genre :</strong> <?= htmlspecialchars($rp['oc2_gender']) ?>
+                                </p>
+                                <p class="card-text"><strong>Propriétaire
+                                        :</strong> <?= htmlspecialchars($rp['oc2_owner']) ?></p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +93,7 @@ require 'php/detail-rp_managment.php';
                                     <?php
                                     $stmt = $pdo->query('SELECT * FROM etat_rp');
                                     while ($row = $stmt->fetch()) {
-                                        echo '<option value="' . htmlspecialchars($row['etat_id']) . '"'. ($rp['rp_etat'] == $row['etat_id'] ? ' selected' : '') .'>' . htmlspecialchars($row['etat_name']) . '</option>';
+                                        echo '<option value="' . htmlspecialchars($row['etat_id']) . '"' . ($rp['rp_etat'] == $row['etat_id'] ? ' selected' : '') . '>' . htmlspecialchars($row['etat_name']) . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -95,11 +106,13 @@ require 'php/detail-rp_managment.php';
                             <input type="hidden" name="modifier_dates" value="1">
                             <div class="form-group">
                                 <label for="date_debut">Nouvelle date de début :</label>
-                                <input type="date" name="date_debut" id="date_debut" class="form-control" value="<?= htmlspecialchars($rp['rp_date_debut']) ?>">
+                                <input type="date" name="date_debut" id="date_debut" class="form-control"
+                                       value="<?= htmlspecialchars($rp['rp_date_debut']) ?>">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="date_fin">Nouvelle date de fin :</label>
-                                <input type="date" name="date_fin" id="date_fin" class="form-control" value="<?= htmlspecialchars($rp['rp_date_fin']) ?>">
+                                <input type="date" name="date_fin" id="date_fin" class="form-control"
+                                       value="<?= htmlspecialchars($rp['rp_date_fin']) ?>">
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Modifier les dates</button>
                         </form>

@@ -29,19 +29,22 @@
                 <div class="form-group mb-3">
                     <!-- Username input -->
                     <label for="username" class="form-label">Nom d'utilisateur</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur" required>
+                    <input type="text" class="form-control" id="username" name="username"
+                           placeholder="Nom d'utilisateur" required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Le nom d'utilisateur est requis.</div>
                 </div>
                 <div class="form-group mb-3">
                     <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom" required>
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom"
+                           required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Le prénom est requis.</div>
                 </div>
                 <div class="form-group mb-3">
                     <label for="lastname" class="form-label">Nom de famille</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom de famille" required>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom de famille"
+                           required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Le nom de famille est requis.</div>
                 </div>
@@ -56,13 +59,15 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe"
+                           required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Le mot de passe est requis.</div>
                 </div>
                 <div class="form-group mb-3">
                     <label for="password-confirm" class="form-label">Confirmer le mot de passe</label>
-                    <input type="password" class="form-control" id="password-confirm" name="password-confirm" placeholder="Confirmer le mot de passe" required>
+                    <input type="password" class="form-control" id="password-confirm" name="password-confirm"
+                           placeholder="Confirmer le mot de passe" required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">La confirmation du mot de passe est requise.</div>
                 </div>
@@ -76,19 +81,19 @@
 <?php require 'js/bootstrap_script.html' ?>
 
 <script>
-    $(document).ready(function(){
-        $("#registerForm").on("submit", function(event){
+    $(document).ready(function () {
+        $("#registerForm").on("submit", function (event) {
             event.preventDefault();
             $.ajax({
                 url: "php/register_user.php",
                 type: "post",
                 data: $(this).serialize(),
-                complete: function(xhr, textStatus) {
+                complete: function (xhr, textStatus) {
                     var message = '';
                     if (xhr.status === 200) {
                         message = "Enregistrement effectué ! Redirection en cours...";
-                        $("#message").html('<div class="alert alert-success" role="alert">'+message+'</div>');
-                        setTimeout(function(){
+                        $("#message").html('<div class="alert alert-success" role="alert">' + message + '</div>');
+                        setTimeout(function () {
                             window.location.href = "login.php";
                         }, 3000);
                     } else {
@@ -106,7 +111,7 @@
                                 message = "Erreur de connexion au serveur.";
                                 break;
                         }
-                        $("#message").html('<div class="alert alert-danger" role="alert">'+message+'</div>');
+                        $("#message").html('<div class="alert alert-danger" role="alert">' + message + '</div>');
                     }
                 }
             });
@@ -116,6 +121,6 @@
 
 </body>
 
-<?php require 'php/footer.php'?>
+<?php require 'php/footer.php' ?>
 
 </html>

@@ -10,7 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Installation</title>
 </head>
 <body>
@@ -58,19 +59,17 @@
     const installForm = document.getElementById('install-form');
     const installAlerte = document.getElementById('install-alert');
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Effectue une requête AJAX pour vérifier si le fichier "install.lock" existe
         $.ajax({
             url: 'install.lock',
             type: 'HEAD',
-            error: function()
-            {
+            error: function () {
                 // Le fichier "install.lock" n'existe pas, affiche 'installateur'
                 installForm.classList.remove('d-none');
                 installAlerte.classList.add('d-none');
             },
-            success: function()
-            {
+            success: function () {
                 // Le fichier "install.lock" existe, affiche 'Installation non autorisée !'
                 installForm.classList.add('d-none');
                 installAlerte.classList.remove('d-none');
@@ -109,7 +108,7 @@
                 successMessageElement.classList.remove('d-none');
                 successMessageElement.textContent = data.success;
 
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location.href = "login.php";
                 }, 5000);
             }

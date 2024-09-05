@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm py-3">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="index.php">Neodraco's RP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -10,7 +11,8 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item dropdown align-self-center">
-                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button"
+                       aria-expanded="false">
                         Mes RP
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">

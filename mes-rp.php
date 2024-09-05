@@ -19,7 +19,8 @@ require 'vendor/autoload.php';
 require 'php/db_connect.php';
 
 // Fonction pour obtenir la classe du badge
-function getBadgeClass($etat) {
+function getBadgeClass($etat)
+{
     switch ($etat) {
         case 'Pas commencé':
             return 'bg-secondary';
@@ -37,7 +38,8 @@ function getBadgeClass($etat) {
 }
 
 // Fonction pour lutter les détails du RP
-function rpDetail($label, $value) {
+function rpDetail($label, $value)
+{
     return "<span><strong>" . htmlspecialchars($label) . " :</strong> " . htmlspecialchars($value) . "</span>";
 }
 
@@ -92,15 +94,21 @@ foreach ($rps as $rp) {
                         <ul class="list-group mb-4">
                             <?php foreach ($groupedRps[$etat] as $rp): ?>
                                 <li class="list-group-item">
-                                    <a href="detail-rp.php?id=<?= htmlspecialchars($rp['rp_id']) ?>" class="stretched-link text-decoration-none text-dark">
+                                    <a href="detail-rp.php?id=<?= htmlspecialchars($rp['rp_id']) ?>"
+                                       class="stretched-link text-decoration-none text-dark">
                                         <div>
                                             <div>
-                                                <strong><?= htmlspecialchars($rp['oc1_name']) ?> x <?= htmlspecialchars($rp['oc2_name']) ?></strong> |
-                                                Sur <?= htmlspecialchars($rp['reseau_name']) ?>, avec <strong>&#64;<?= htmlspecialchars($rp['roleplayer_name']) ?></strong>
+                                                <strong><?= htmlspecialchars($rp['oc1_name']) ?>
+                                                    x <?= htmlspecialchars($rp['oc2_name']) ?></strong> |
+                                                Sur <?= htmlspecialchars($rp['reseau_name']) ?>, avec
+                                                <strong>&#64;<?= htmlspecialchars($rp['roleplayer_name']) ?></strong>
                                             </div>
                                             <div>
-                                                Le RP est de type <strong><?= htmlspecialchars($rp['type_name']) ?></strong> et a commencé le
-                                                <strong><?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A'?></strong> et a été terminé le
+                                                Le RP est de type
+                                                <strong><?= htmlspecialchars($rp['type_name']) ?></strong> et a commencé
+                                                le
+                                                <strong><?= $rp['rp_date_debut'] ? date("d/m/Y", strtotime($rp['rp_date_debut'])) : 'N/A' ?></strong>
+                                                et a été terminé le
                                                 <strong><?= $rp['rp_date_fin'] ? date("d/m/Y", strtotime($rp['rp_date_fin'])) : 'N/A' ?></strong>.
                                             </div>
                                         </div>

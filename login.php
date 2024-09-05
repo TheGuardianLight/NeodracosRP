@@ -54,7 +54,7 @@ require 'php/db_connect.php';
                     <a href="register.php" class="btn btn-secondary mb-3">S'inscrire</a>
                 <?php endif; ?>
             </form>
-            <?php if(isset($_SESSION['message'])): ?>
+            <?php if (isset($_SESSION['message'])): ?>
                 <div id="message" class="alert alert-danger" role="alert">
                     <?php
                     echo $_SESSION['message'];
@@ -90,6 +90,6 @@ require 'php/db_connect.php';
 
 </body>
 
-<?php require 'php/footer.php'?>
+<?php require 'php/footer.php' ?>
 
 </html>

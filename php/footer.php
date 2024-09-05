@@ -10,11 +10,13 @@
                 </div>
                 <div class="col-sm-4 text-sm-right">
                     <section class="mb-2">
-                        <a class="btn btn-outline-light btn-floating m-1 no-line" href="https://noaledet.fr" target="_blank">
+                        <a class="btn btn-outline-light btn-floating m-1 no-line" href="https://noaledet.fr"
+                           target="_blank">
                             <i class="fas fa-globe"></i>
                         </a>
-                        <a class="btn btn-outline-light btn-floating m-1 no-line" href="https://github.com/TheGuardianLight" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <a class="btn btn-outline-light btn-floating m-1 no-line"
+                           href="https://gitlab.com/neodraco/NeodracoLink" target="_blank">
+                            <i class="fab fa-gitlab"></i>
                         </a>
                     </section>
                 </div>
